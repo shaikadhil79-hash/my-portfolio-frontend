@@ -1,0 +1,598 @@
+/* =========================================================
+   ADHIL PORTFOLIO — HERO
+========================================================= */
+
+.adhil-hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    #080808;
+
+  background-size:
+    80px 80px,
+    80px 80px,
+    auto;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   SUBTLE CENTER GLOW
+========================================================= */
+
+.adhil-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  right: 4%;
+  top: 45%;
+
+  transform: translateY(-50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 180, 90, 0.09) 0%,
+      rgba(255, 180, 90, 0.035) 30%,
+      transparent 70%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.adhil-hero-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: 64%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding-left: 4vw;
+
+  padding-top: 50px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.adhil-hero-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 48px;
+
+  font-family:
+    "DM Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  text-transform: uppercase;
+}
+
+.meta-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  display: inline-block;
+}
+
+.meta-separator {
+  color: rgba(255, 255, 255, 0.35);
+
+  margin: 0 2px;
+}
+
+
+/* =========================================================
+   HUGE TITLE
+========================================================= */
+
+.adhil-hero-title {
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      70px,
+      9vw,
+      145px
+    );
+
+  line-height: 0.82;
+
+  letter-spacing: -0.075em;
+
+  font-weight: 900;
+
+  color: #f4f4f4;
+
+  text-transform: uppercase;
+}
+
+.adhil-hero-title span {
+  display: block;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SOCIAL LINKS
+========================================================= */
+
+.adhil-hero-links {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 16px;
+
+  margin-top: 48px;
+}
+
+.adhil-hero-links a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 170px;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid
+    rgba(255, 255, 255, 0.38);
+
+  color:
+    rgba(255, 255, 255, 0.72);
+
+  text-decoration: none;
+
+  font-family:
+    "DM Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 0.12em;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.adhil-hero-links a:hover {
+  color: white;
+
+  border-color: white;
+
+  transform: translateX(7px);
+}
+
+.link-arrow {
+  font-size: 17px;
+
+  line-height: 1;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.adhil-hero-links a:hover .link-arrow {
+  transform:
+    translate(3px, -3px);
+}
+
+
+/* =========================================================
+   RIGHT SIDE IMAGE
+========================================================= */
+
+.adhil-hero-photo {
+  position: absolute;
+
+  z-index: 2;
+
+  right: 1.5vw;
+
+  bottom: 0;
+
+  width: 40vw;
+
+  max-width: 650px;
+
+  height: 88vh;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: flex-end;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+
+/* IMAGE */
+
+.adhil-hero-photo {
+  position: absolute;
+
+  right: 1vw;
+  bottom: 0;
+
+  width: 43vw;
+  max-width: 650px;
+  height: 88vh;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  z-index: 2;
+  pointer-events: none;
+
+  overflow: hidden;
+
+  /* Only controls the edge blending */
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+}
+
+.adhil-hero-photo img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  /* DO NOT CHANGE IMAGE COLORS */
+  filter: none;
+
+  /* Only fade the bottom edge */
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      black 65%,
+      black 78%,
+      rgba(0, 0, 0, 0.65) 90%,
+      transparent 100%
+    );
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black 65%,
+      black 78%,
+      rgba(0, 0, 0, 0.65) 90%,
+      transparent 100%
+    );
+}
+
+/* =========================================================
+   IMAGE DARK BLEND
+========================================================= */
+
+.adhil-hero-photo::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to right,
+      #080808 0%,
+      rgba(8, 8, 8, 0.45) 8%,
+      rgba(8, 8, 8, 0.12) 20%,
+      transparent 38%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BOTTOM CIRCLE
+========================================================= */
+
+.adhil-hero-circle {
+  position: absolute;
+
+  left: 4vw;
+
+  bottom: 35px;
+
+  width: 42px;
+  height: 42px;
+
+  border:
+    2px solid
+    rgba(255, 255, 255, 0.9);
+
+  border-radius: 50%;
+
+  z-index: 5;
+
+  animation:
+    heroCircleFloat 4s
+    ease-in-out
+    infinite;
+}
+
+@keyframes heroCircleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .adhil-hero-content {
+    width: 68%;
+
+    padding-left: 4vw;
+  }
+
+  .adhil-hero-title {
+    font-size:
+      clamp(
+        65px,
+        10vw,
+        120px
+      );
+  }
+
+  .adhil-hero-photo {
+    width: 43vw;
+
+    height: 80vh;
+
+    right: 0;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .adhil-hero {
+    min-height: 100svh;
+
+    background-size:
+      50px 50px,
+      50px 50px,
+      auto;
+  }
+
+
+  .adhil-hero-content {
+    width: 100%;
+
+    min-height: 100svh;
+
+    justify-content: flex-start;
+
+    padding:
+      145px 20px 40px;
+  }
+
+
+  .adhil-hero-meta {
+    margin-bottom: 35px;
+
+    font-size: 9px;
+
+    gap: 7px;
+  }
+
+  .meta-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+
+  .adhil-hero-title {
+    font-size:
+      clamp(
+        52px,
+        15.5vw,
+        95px
+      );
+
+    line-height: 0.84;
+
+    letter-spacing: -0.07em;
+  }
+
+
+  .adhil-hero-title span {
+    white-space: normal;
+  }
+
+
+  .adhil-hero-links {
+    margin-top: 30px;
+
+    gap: 12px;
+  }
+
+  .adhil-hero-links a {
+    min-width: 145px;
+
+    font-size: 9px;
+  }
+
+
+  .adhil-hero-photo {
+    width: 72vw;
+
+    height: 55vh;
+
+    right: -7vw;
+
+    bottom: 0;
+
+    opacity: 0.75;
+
+    z-index: 1;
+  }
+
+
+  .adhil-hero-photo::after {
+    background:
+      linear-gradient(
+        to right,
+        #080808 0%,
+        rgba(8, 8, 8, 0.65) 30%,
+        transparent 75%
+      );
+  }
+
+
+  .adhil-hero-circle {
+    left: 20px;
+
+    bottom: 22px;
+
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .adhil-hero-content {
+    padding-top: 125px;
+  }
+
+  .adhil-hero-title {
+    font-size:
+      clamp(
+        48px,
+        15vw,
+        72px
+      );
+  }
+
+  .adhil-hero-photo {
+    width: 78vw;
+
+    height: 50vh;
+
+    right: -12vw;
+
+    opacity: 0.68;
+  }
+
+  .adhil-hero-links {
+    margin-top: 28px;
+  }
+}
