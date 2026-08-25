@@ -10,7 +10,6 @@ const projects = [
     title: "A-ONE FREEZE",
     category: "SERVICE BOOKING PLATFORM",
     year: "2026",
-
     image: "/images/a-one-freeze.png",
 
     description:
@@ -31,8 +30,6 @@ const projects = [
       "PostgreSQL",
       "REST API",
     ],
-
-    accent: "blue",
   },
 
   {
@@ -40,7 +37,6 @@ const projects = [
     title: "FITNESS TRACKER",
     category: "AI FITNESS PLATFORM",
     year: "2026",
-
     image: "/images/fitness-tracking.png",
 
     description:
@@ -61,8 +57,6 @@ const projects = [
       "Flask",
       "PostgreSQL",
     ],
-
-    accent: "green",
   },
 
   {
@@ -70,7 +64,6 @@ const projects = [
     title: "E-PANCHAYAT",
     category: "E-GOVERNANCE PLATFORM",
     year: "2026",
-
     image: "/images/e-panchayat.png",
 
     description:
@@ -91,8 +84,6 @@ const projects = [
       "REST API",
       "JWT",
     ],
-
-    accent: "violet",
   },
 ];
 
@@ -101,117 +92,130 @@ function Projects() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      /* =========================================
+         SECTION HEADER
+      ========================================= */
 
-      /* ================================
-         SECTION LABEL
-      ================================= */
-
-      gsap.from(".projects-label", {
-        scrollTrigger: {
-          trigger: ".projects-section",
-          start: "top 80%",
-          once: true,
+      gsap.fromTo(
+        ".projects-label",
+        {
+          opacity: 0,
+          y: 25,
         },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".projects-section",
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
 
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-
-      /* ================================
-         SECTION HEADING
-      ================================= */
-
-      gsap.from(".projects-heading span", {
-        scrollTrigger: {
-          trigger: ".projects-heading",
-          start: "top 80%",
-          once: true,
+      gsap.fromTo(
+        ".projects-heading span",
+        {
+          opacity: 0,
+          y: 60,
         },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: ".projects-heading",
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
 
-        opacity: 0,
-        y: 80,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power4.out",
-      });
+      /* =========================================
+         PROJECT CARDS
+      ========================================= */
 
+      const slides =
+        gsap.utils.toArray(".project-slide");
 
-      /* ================================
-         PROJECT SLIDES
-      ================================= */
+      slides.forEach((slide) => {
+        const image =
+          slide.querySelector(
+            ".project-slide-image"
+          );
 
-      gsap.utils
-        .toArray(".project-slide")
-        .forEach((slide) => {
+        const content =
+          slide.querySelector(
+            ".project-slide-content"
+          );
 
-          const image =
-            slide.querySelector(
-              ".project-slide-image"
-            );
+        const isReverse =
+          slide.classList.contains("reverse");
 
-          const content =
-            slide.querySelector(
-              ".project-slide-content"
-            );
-
-
-          /* IMAGE ANIMATION */
-
-          gsap.from(image, {
-            scrollTrigger: {
-              trigger: slide,
-              start: "top 80%",
-              once: true,
-            },
-
-            opacity: 0,
-
-            x: slide.classList.contains(
-              "reverse"
-            )
-              ? 80
-              : -80,
-
-            duration: 1,
-
-            ease: "power4.out",
-          });
-
-
-          /* CONTENT ANIMATION */
-
-          gsap.from(content, {
-            scrollTrigger: {
-              trigger: slide,
-              start: "top 80%",
-              once: true,
-            },
-
-            opacity: 0,
-
-            x: slide.classList.contains(
-              "reverse"
-            )
-              ? -60
-              : 60,
-
-            duration: 1,
-
-            delay: 0.15,
-
-            ease: "power4.out",
-          });
-
+        /*
+         * IMPORTANT:
+         * Keep the project visible by default.
+         * Animation is added only when it enters view.
+         */
+        gsap.set(image, {
+          opacity: 1,
+          x: 0,
+          visibility: "visible",
         });
 
+        gsap.set(content, {
+          opacity: 1,
+          x: 0,
+          visibility: "visible",
+        });
+
+        ScrollTrigger.create({
+          trigger: slide,
+          start: "top 85%",
+          once: true,
+
+          onEnter: () => {
+            gsap.fromTo(
+              image,
+              {
+                opacity: 0,
+                x: isReverse ? 70 : -70,
+              },
+              {
+                opacity: 1,
+                x: 0,
+                duration: 0.9,
+                ease: "power3.out",
+              }
+            );
+
+            gsap.fromTo(
+              content,
+              {
+                opacity: 0,
+                x: isReverse ? -50 : 50,
+              },
+              {
+                opacity: 1,
+                x: 0,
+                duration: 0.9,
+                delay: 0.12,
+                ease: "power3.out",
+              }
+            );
+          },
+        });
+      });
+
+      ScrollTrigger.refresh();
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
-
 
   return (
     <section
@@ -219,199 +223,126 @@ function Projects() {
       className="projects-section"
       ref={sectionRef}
     >
-
-      {/* =================================
+      {/* =========================================
           SECTION HEADER
-      ================================== */}
+      ========================================= */}
 
       <div className="projects-top">
-
         <div className="projects-label">
           04 — SELECTED WORK
         </div>
 
-        <div className="projects-line"></div>
-
+        <div className="projects-line" />
       </div>
 
-
-      {/* =================================
-          MAIN HEADING
-      ================================== */}
+      {/* =========================================
+          HEADING
+      ========================================= */}
 
       <div className="projects-heading">
-
-        <span>
-          THINGS
-        </span>
+        <span>THINGS</span>
 
         <span className="projects-outline">
-          I'VE BUILT.
+          I&apos;VE BUILT.
         </span>
-
       </div>
 
-
-      {/* =================================
+      {/* =========================================
           PROJECT LIST
-      ================================== */}
+      ========================================= */}
 
       <div className="projects-list">
+        {projects.map((project, index) => (
+          <article
+            className={`project-slide ${
+              index % 2 !== 0
+                ? "reverse"
+                : ""
+            }`}
+            key={project.number}
+          >
+            {/* PROJECT NUMBER */}
 
-        {projects.map(
-          (project, index) => (
+            <div className="project-slide-number">
+              <span>{project.number}</span>
 
-            <article
-              className={`project-slide ${
-                index % 2 !== 0
-                  ? "reverse"
-                  : ""
-              }`}
+              <small>{project.year}</small>
+            </div>
 
-              key={project.number}
-            >
+            {/* PROJECT IMAGE */}
 
-              {/* ===========================
-                  PROJECT NUMBER
-              ============================ */}
+            <div className="project-slide-image">
+              <img
+                src={project.image}
+                alt={`${project.title} project`}
+              />
 
-              <div className="project-slide-number">
-
+              <div className="project-image-overlay">
                 <span>
-                  {project.number}
+                  PROJECT {project.number}
                 </span>
 
-                <small>
-                  {project.year}
-                </small>
+                <strong>↗</strong>
+              </div>
+            </div>
 
+            {/* PROJECT CONTENT */}
+
+            <div className="project-slide-content">
+              <div className="project-category">
+                {project.category}
               </div>
 
+              <h3>{project.title}</h3>
 
-              {/* ===========================
-                  PROJECT IMAGE
-              ============================ */}
+              <p className="project-description">
+                {project.description}
+              </p>
 
-              <div
-                className={`project-slide-image ${project.accent}`}
-              >
+              {/* WHAT I DID */}
 
-                <img
-                  src={project.image}
-                  alt={`${project.title} project`}
-                />
-
-                <div className="project-image-overlay">
-
-                  <span>
-                    PROJECT {project.number}
-                  </span>
-
-                  <strong>
-                    ↗
-                  </strong>
-
+              <div className="project-details">
+                <div className="project-detail-title">
+                  WHAT I DID
                 </div>
 
+                <div className="project-responsibilities">
+                  {project.responsibilities.map(
+                    (item) => (
+                      <div
+                        className="project-responsibility"
+                        key={item}
+                      >
+                        <span>+</span>
+
+                        <p>{item}</p>
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
 
+              {/* TECHNOLOGIES */}
 
-              {/* ===========================
-                  PROJECT CONTENT
-              ============================ */}
-
-              <div className="project-slide-content">
-
-                <div className="project-category">
-                  {project.category}
+              <div className="project-tech-section">
+                <div className="project-detail-title">
+                  TECHNOLOGIES
                 </div>
 
-
-                <h3>
-                  {project.title}
-                </h3>
-
-
-                <p className="project-description">
-                  {project.description}
-                </p>
-
-
-                {/* =========================
-                    WHAT I DID
-                ========================== */}
-
-                <div className="project-details">
-
-                  <div className="project-detail-title">
-                    WHAT I DID
-                  </div>
-
-                  <div className="project-responsibilities">
-
-                    {project.responsibilities.map(
-                      (item, i) => (
-
-                        <div
-                          className="project-responsibility"
-                          key={i}
-                        >
-
-                          <span>
-                            +
-                          </span>
-
-                          <p>
-                            {item}
-                          </p>
-
-                        </div>
-
-                      )
-                    )}
-
-                  </div>
-
+                <div className="project-tech">
+                  {project.technologies.map(
+                    (tech) => (
+                      <span key={tech}>
+                        {tech}
+                      </span>
+                    )
+                  )}
                 </div>
-
-
-                {/* =========================
-                    TECHNOLOGIES
-                ========================== */}
-
-                <div className="project-tech-section">
-
-                  <div className="project-detail-title">
-                    TECHNOLOGIES
-                  </div>
-
-                  <div className="project-tech">
-
-                    {project.technologies.map(
-                      (tech) => (
-
-                        <span
-                          key={tech}
-                        >
-                          {tech}
-                        </span>
-
-                      )
-                    )}
-
-                  </div>
-
-                </div>
-
               </div>
-
-            </article>
-
-          )
-        )}
-
+            </div>
+          </article>
+        ))}
       </div>
-
     </section>
   );
 }
