@@ -10,7 +10,7 @@ function Hero() {
         {/* SMALL INTRO */}
         <div className="adhil-hero-meta">
           <span className="meta-dot"></span>
-          <span>FRONTEND DEVELOPER</span>
+          <span>WEB DEVELOPER</span>
           <span className="meta-separator">·</span>
           <span>CHENNAI</span>
         </div>
@@ -18,7 +18,7 @@ function Hero() {
 
         {/* MAIN TITLE */}
         <h1 className="adhil-hero-title">
-          <span>FRONTEND</span>
+          <span>WEB</span>
           <span>DEVELOPER</span>
         </h1>
 
@@ -54,7 +54,7 @@ function Hero() {
 
         <img
           src="/images/my-image.png"
-          alt="Adhil - Frontend Developer"
+          alt="Shaik Adhil - Web Developer"
         />
 
       </div>

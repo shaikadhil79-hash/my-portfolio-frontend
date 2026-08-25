@@ -11,13 +11,9 @@ function Navbar() {
     { name: "EXPERIENCE", id: "experience" },
   ];
 
-  /* =========================================
-     SCROLL SPY
-  ========================================= */
-
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150;
+      const scrollPosition = window.scrollY + 180;
 
       let currentSection = "home";
 
@@ -26,10 +22,7 @@ function Navbar() {
 
         if (!section) return;
 
-        const sectionTop =
-          section.offsetTop;
-
-        if (scrollPosition >= sectionTop) {
+        if (scrollPosition >= section.offsetTop) {
           currentSection = item.id;
         }
       });
@@ -37,130 +30,93 @@ function Navbar() {
       setActive(currentSection);
     };
 
-    window.addEventListener(
-      "scroll",
-      handleScroll,
-      { passive: true }
-    );
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     handleScroll();
 
     return () => {
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  /* =========================================
-     SCROLL TO SECTION
-  ========================================= */
-
   const scrollToSection = (id) => {
-  const section = document.getElementById(id);
+    const section = document.getElementById(id);
 
-  if (!section) {
-    console.warn(`Section #${id} not found`);
-    return;
-  }
+    if (!section) {
+      console.warn(`Section #${id} not found`);
+      return;
+    }
 
-  section.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
+    const navbarHeight = 88;
 
-  setActive(id);
-};
+    const sectionTop =
+      section.getBoundingClientRect().top +
+      window.scrollY -
+      navbarHeight;
+
+    window.scrollTo({
+      top: Math.max(0, sectionTop),
+      behavior: "smooth",
+    });
+
+    setActive(id);
+  };
 
   return (
     <header className="adhil-navbar">
 
-      {/* =====================================
-          LOGO
-      ====================================== */}
-
+      {/* LOGO */}
       <button
         type="button"
         className="adhil-logo"
-        onClick={() =>
-          scrollToSection("home")
-        }
+        onClick={() => scrollToSection("home")}
         aria-label="Go to home"
       >
-        ADHIL<span>°</span>
+        SHAIK ADHIL<span>°</span>
       </button>
 
-
-      {/* =====================================
-          NAVIGATION
-      ====================================== */}
-
+      {/* NAVIGATION */}
       <nav
         className="adhil-nav"
         aria-label="Main navigation"
       >
+        {navItems.map((item, index) => (
+          <button
+            type="button"
+            key={item.id}
+            className={`adhil-nav-link ${
+              active === item.id ? "active" : ""
+            }`}
+            onClick={() => scrollToSection(item.id)}
+            aria-current={
+              active === item.id ? "page" : undefined
+            }
+          >
+            <span className="nav-number">
+              {String(index + 1).padStart(2, "0")}
+            </span>
 
-        {navItems.map(
-          (item, index) => (
-            <button
-              type="button"
-              key={item.id}
-              className={`adhil-nav-link ${
-                active === item.id
-                  ? "active"
-                  : ""
-              }`}
-              onClick={() =>
-                scrollToSection(
-                  item.id
-                )
-              }
-              aria-current={
-                active === item.id
-                  ? "page"
-                  : undefined
-              }
-            >
+            <span className="nav-text">
+              {item.name}
+            </span>
 
-              <span className="nav-number">
-                {String(index + 1).padStart(
-                  2,
-                  "0"
-                )}
-              </span>
-
-              <span className="nav-text">
-                {item.name}
-              </span>
-
-              <span
-                className="nav-dot"
-                aria-hidden="true"
-              ></span>
-
-            </button>
-          )
-        )}
-
+            <span
+              className="nav-dot"
+              aria-hidden="true"
+            />
+          </button>
+        ))}
       </nav>
 
-
-      {/* =====================================
-          LET'S TALK
-      ====================================== */}
-
+      {/* CONTACT */}
       <button
         type="button"
         className="adhil-talk"
-        onClick={() =>
-          scrollToSection("contact")
-        }
+        onClick={() => scrollToSection("contact")}
       >
-
-        <span>
-          CONTACT=ME
-        </span>
+        <span>CONTACT-ME</span>
 
         <span
           className="talk-arrow"
@@ -168,7 +124,6 @@ function Navbar() {
         >
           ↗
         </span>
-
       </button>
 
     </header>
