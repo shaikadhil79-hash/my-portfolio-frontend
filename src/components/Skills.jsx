@@ -36,8 +36,13 @@ const skillGroups = {
     number: "03",
     title: "LANGUAGES",
     description:
-      "Programming languages used across web development, backend systems, databases and AI projects.",
-    skills: ["JavaScript", "Python", "Java", "SQL"],
+      "Programming languages used across web development, backend systems and database work.",
+    skills: [
+      "JavaScript",
+      "Python",
+      "Java",
+      "SQL",
+    ],
   },
 
   DATABASE: {
@@ -54,23 +59,8 @@ const skillGroups = {
     ],
   },
 
-  AI: {
-    number: "05",
-    title: "AI / ML",
-    description:
-      "Exploring machine learning and NLP to build intelligent features and smarter application experiences.",
-    skills: [
-      "Python",
-      "Machine Learning",
-      "NLP",
-      "Transformers",
-      "Text Classification",
-      "AI Integration",
-    ],
-  },
-
   TOOLS: {
-    number: "06",
+    number: "05",
     title: "TOOLS",
     description:
       "Using modern development, testing, version-control and design tools throughout the application lifecycle.",
@@ -92,54 +82,98 @@ function Skills() {
   const current = skillGroups[active];
 
   return (
-    <section className="skills-section" id="skills">
+    <section
+      className="skills-section"
+      id="skills"
+    >
       <div className="skills-top">
-        <div className="skills-label">03 — EXPERTISE</div>
-        <div className="skills-line" />
+        <div className="skills-label">
+          03 — EXPERTISE
+        </div>
+
+        <div className="skills-line"></div>
       </div>
 
       <div className="skills-heading">
         <span>WHAT I</span>
-        <span className="skills-outline">WORK WITH.</span>
+
+        <span className="skills-outline">
+          WORK WITH.
+        </span>
       </div>
 
       <div className="skills-layout">
+
+        {/* SKILL CATEGORIES */}
+
         <div className="skill-list">
-          {Object.values(skillGroups).map((group) => (
-            <button
-              type="button"
-              key={group.title}
-              className={`skill-category ${
-                active === group.title ? "active" : ""
-              }`}
-              onMouseEnter={() => setActive(group.title)}
-              onFocus={() => setActive(group.title)}
-              onClick={() => setActive(group.title)}
-            >
-              <span>{group.number}</span>
-              <strong>{group.title}</strong>
-              <span className="skill-arrow">↗</span>
-            </button>
-          ))}
+          {Object.values(skillGroups).map(
+            (group) => (
+              <button
+                type="button"
+                key={group.title}
+                className={`skill-category ${
+                  active === group.title
+                    ? "active"
+                    : ""
+                }`}
+                onMouseEnter={() =>
+                  setActive(group.title)
+                }
+                onFocus={() =>
+                  setActive(group.title)
+                }
+                onClick={() =>
+                  setActive(group.title)
+                }
+              >
+                <span>
+                  {group.number}
+                </span>
+
+                <strong>
+                  {group.title}
+                </strong>
+
+                <span className="skill-arrow">
+                  ↗
+                </span>
+              </button>
+            )
+          )}
         </div>
 
+        {/* ACTIVE SKILL CARD */}
+
         <div className="skill-display">
-          <div className="skill-display-content" key={active}>
+          <div
+            className="skill-display-content"
+            key={active}
+          >
             <div className="skill-display-number">
               {current.number}
             </div>
 
-            <h3>{current.title}</h3>
+            <h3>
+              {current.title}
+            </h3>
 
-            <p>{current.description}</p>
+            <p>
+              {current.description}
+            </p>
 
             <div className="skill-tags">
-              {current.skills.map((skill) => (
-                <span key={skill}>{skill}</span>
-              ))}
+              {current.skills.map(
+                (skill) => (
+                  <span key={skill}>
+                    {skill}
+                  </span>
+                )
+              )}
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
