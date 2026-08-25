@@ -82,16 +82,13 @@ function Skills() {
   const current = skillGroups[active];
 
   return (
-    <section
-      className="skills-section"
-      id="skills"
-    >
+    <section className="skills-section" id="skills">
       <div className="skills-top">
         <div className="skills-label">
           03 — EXPERTISE
         </div>
 
-        <div className="skills-line"></div>
+        <div className="skills-line" />
       </div>
 
       <div className="skills-heading">
@@ -104,46 +101,36 @@ function Skills() {
 
       <div className="skills-layout">
 
-        {/* SKILL CATEGORIES */}
-
         <div className="skill-list">
-          {Object.values(skillGroups).map(
-            (group) => (
-              <button
-                type="button"
-                key={group.title}
-                className={`skill-category ${
-                  active === group.title
-                    ? "active"
-                    : ""
-                }`}
-                onMouseEnter={() =>
-                  setActive(group.title)
-                }
-                onFocus={() =>
-                  setActive(group.title)
-                }
-                onClick={() =>
-                  setActive(group.title)
-                }
-              >
-                <span>
-                  {group.number}
-                </span>
+          {Object.values(skillGroups).map((group) => (
+            <button
+              type="button"
+              key={group.title}
+              className={`skill-category ${
+                active === group.title
+                  ? "active"
+                  : ""
+              }`}
+              onMouseEnter={() =>
+                setActive(group.title)
+              }
+              onFocus={() =>
+                setActive(group.title)
+              }
+              onClick={() =>
+                setActive(group.title)
+              }
+            >
+              <span>{group.number}</span>
 
-                <strong>
-                  {group.title}
-                </strong>
+              <strong>{group.title}</strong>
 
-                <span className="skill-arrow">
-                  ↗
-                </span>
-              </button>
-            )
-          )}
+              <span className="skill-arrow">
+                ↗
+              </span>
+            </button>
+          ))}
         </div>
-
-        {/* ACTIVE SKILL CARD */}
 
         <div className="skill-display">
           <div
@@ -154,22 +141,16 @@ function Skills() {
               {current.number}
             </div>
 
-            <h3>
-              {current.title}
-            </h3>
+            <h3>{current.title}</h3>
 
-            <p>
-              {current.description}
-            </p>
+            <p>{current.description}</p>
 
             <div className="skill-tags">
-              {current.skills.map(
-                (skill) => (
-                  <span key={skill}>
-                    {skill}
-                  </span>
-                )
-              )}
+              {current.skills.map((skill) => (
+                <span key={skill}>
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
         </div>

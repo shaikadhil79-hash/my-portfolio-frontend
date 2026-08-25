@@ -7,7 +7,7 @@ function Navbar() {
     { name: "HOME", id: "home" },
     { name: "ABOUT", id: "about" },
     { name: "SKILLS", id: "skills" },
-    { name: "WORK", id: "work" },
+    { name: "PROJECTS", id: "work" },
     { name: "EXPERIENCE", id: "experience" },
   ];
 
