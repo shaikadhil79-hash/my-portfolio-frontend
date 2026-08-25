@@ -3595,3 +3595,58 @@ a {
 #contact {
   scroll-margin-top: 88px;
 }
+.skill-display-content {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .skills-section {
+    min-height: auto;
+    padding: 100px 20px 90px;
+    display: block;
+  }
+
+  .skills-layout {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .skill-display {
+    min-height: 320px;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+.skill-display-content {
+  animation: skillFadeIn 0.3s ease both;
+}
+
+@keyframes skillFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .skills-section {
+    min-height: auto;
+    display: block;
+  }
+
+  .skills-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-display {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
